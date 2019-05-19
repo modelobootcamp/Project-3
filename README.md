@@ -1,7 +1,9 @@
-# project-3
+# Project-3
 @Olesya Bondarenko @Connie @Farzad
 Web scraped data of 10k Play Store apps for analysing the Android market.
 
+ 
+[Source:](https://www.kaggle.com/lava18/google-play-store-apps "Google Play Store Apps ")
 # Weekly Schedule
 
 ## Day 1 (Today):
