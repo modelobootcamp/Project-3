@@ -6,8 +6,14 @@ Web scraped data of 10k Play Store apps for analysing the Android market.
 [Source:](https://www.kaggle.com/lava18/google-play-store-apps "Google Play Store Apps ")
 # Weekly Schedule
 
+
 ## Day 1 (Today):
 ### Between now and Monday, you will need to start brainstorming topics with your group and researching potential data sets. Your focus should center around:
+
+
+<p align="center">
+  <img width="660" height="500" src="https://github.com/modelobootcamp/project-3/blob/master/images/Screen%20Shot%202019-05-18%20at%2014.04.46.png">
+</p>
 Selecting a topic 	
 Finding a data set	
 Finding inspiration	
