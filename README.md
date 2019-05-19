@@ -39,5 +39,5 @@ A link to the primary GitHub repository you’ll be housing your work in
 
 
 <p align="center">
-  <img width="660" height="500" src="https://github.com/modelobootcamp/project-3/blob/master/images/Screen%20Shot%202019-05-18%20at%2023.23.15.png">
+  <img width="800" height="500" src="https://github.com/modelobootcamp/project-3/blob/master/images/Screen%20Shot%202019-05-18%20at%2023.23.15.png">
 </p>
