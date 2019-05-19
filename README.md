@@ -3,6 +3,15 @@
 
 Web scraped data of 10k Play Store apps for analysing the Android market.
 
+For the weekly Project our team decided to look into Google Play App Store Data.
+This project is to help and improve our ability to get ourselves more familiar with the manipulation of  data and Web Scraping. 
+
+We will gather the data from kaggle.com and the Metadata will be extracted from Lavanya Gupta (https://www.kaggle.com/lava18).
+
+The mentioned project has used Python, Javascript, and Matplotlib.
+
+Our team goal is to reach the same results reached by the original research.
+
  
 [Source:](https://www.kaggle.com/lava18/google-play-store-apps "Google Play Store Apps ")
 # Weekly Schedule
