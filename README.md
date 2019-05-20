@@ -1,5 +1,16 @@
 # Project-3
+
+<p align="center">
+  <img width="660" height="500" src="https://github.com/modelobootcamp/Project-3/blob/master/images/Screen%20Shot%202019-05-19%20at%2003.49.32.png">
+</p>
+
+
 @Olesya | @Connie | @Farzad
+
+<p align="center">
+  <img width="660" height="500" src="https://github.com/modelobootcamp/Project-3/blob/master/images/Screen%20Shot%202019-05-19%20at%2003.47.41.png">
+</p>
+
 
 Web scraped data of 10k Play Store apps for analysing the Android market.
 
