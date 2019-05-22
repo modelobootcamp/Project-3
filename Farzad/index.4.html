@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Google Play Store App  1</title>
+
+	<link rel="stylesheet" href="dc.css">
+
+
+</head>
+<body>
+
+     
+     
+     
+     <h1>Google Play Store App </h1>
+
+
+	<div id="Rating">
+    <strong>Rating</strong>
+    <span class="reset" style="display: none;">Selected: <span class="filter"></span></span>
+    <a class="reset" href="javascript:carTypeChart.filterAll();dc.redrawAll();" style="display: none;">reset</a>
+
+    <div class="clearfix"></div>
+
+	</div>
+
+	<div id="gateName">
+		<strong>Reviews</strong>
+    <span class="reset" style="display: none;">Selected: <span class="filter"></span></span>
+    <a class="reset" href="javascript:gateNameChart.filterAll();dc.redrawAll();" style="display: none;">reset</a>
+
+    <div class="clearfix"></div>
+	</div>
+
+    <div>
+      <div class="dc-data-count">
+          <span class="filter-count"></span> selected out of <span class="total-count"></span> records | <a
+              href="javascript:dc.filterAll(); dc.renderAll();">Reset All</a>
+    </div>
+    </div>
+    <table class="table table-hover dc-data-table">
+    </table>
+
+
+	<script src="crossfilter.js"></script>
+	<script src="d3.js"></script>
+	<script src="dc.js"></script>
+
+	<script>
+
+		var RatingChart = dc.rowChart("#Rating"),
+          SizeChart = dc.rowChart("#Reviews"),
+			visCount = dc.dataCount(".dc-data-count"),
+			visTable = dc.dataTable(".dc-data-table");
+
+    // Full dataset could give issues because of gzip
+    // var url = "Data.csv.gz";
+    var url = "data.csv.gz";
+
+		d3.csv(url, function (err, data) {
+			// Timestamp,car-id,car-type,gate-name
+			// 2015-05-01 00:43:28,20154301124328-262,4,entrance3
+			// 2015-05-01 01:03:48,20154301124328-262,4,general-gate1
+			// 2015-05-01 01:06:24,20154301124328-262,4,ranger-stop2
+			// 2015-05-01 01:09:25,20154301124328-262,4,ranger-stop0
+			if (err) throw err;
+
+			data.forEach(function (d) {
+				d.Last_Updated = new Last_Update(d.Last_Updated);
+			});
+
+			var ndx = crossfilter(data);
+			var all = ndx.groupAll();
+
+			var RatingDim = ndx.dimension(function (d) { return d["Rating"]; });
+			var ReviewsDim = ndx.dimension(function (d) { return d["Reviews"]; });
+			var dateDim = ndx.dimension(function (d) { return d.Last_Updated; });
+
+			var RatingGroup = RatingDim.group();
+			var ReviewsGroup = ReviewsDim.group();
+			var dateDim = dateDim.group();
+
+
+			RatingChart
+				.dimension(RatingDim)
+				.group(RatingGroup)
+				.elasticX(true);
+
+                    ReviewsChart
+				.dimension(ReviewsDim)
+				.group(ReviewsGroup)
+				.elasticX(true)
+				.data(function (group) { return group.top(10); });
+
+
+			visCount
+				.dimension(ndx)
+				.group(all);
+
+			visTable
+				.dimension(dateDim)
+        // Data table does not use crossfilter group but rather a closure
+        // as a grouping function
+				.group(function (d) {
+            var format = d3.format('02d');
+            return d.Last_Updated.getFullYear() + '/' + format((d.Last_Updated.getMonth() + 1));
+        })
+				.columns([
+					"Last_Updated",
+					"Size",
+					"Rating",
+					"Reviews"
+					]);
+
+			dc.renderAll();
+
+		});
+	</script>
+</body>
+</html>
