@@ -1,6 +1,9 @@
+var data = d3.json("db/top_apps.json")
+data.then(d => {console.log("data", data)})
 
 
-d3.json("https://raw.githubusercontent.com/d3/d3-hierarchy/v1.1.8/test/data/flare.json").then(function(data) {
+
+d3.json("db/top_apps.json").then(function(data) {
     console.log(data);
 
     pack = data => d3.pack()
@@ -15,7 +18,7 @@ d3.json("https://raw.githubusercontent.com/d3/d3-hierarchy/v1.1.8/test/data/flar
 
     console.log(format)
 
-    const width = 932
+    const width = 400
     const height = width
 
 
@@ -52,10 +55,10 @@ d3.json("https://raw.githubusercontent.com/d3/d3-hierarchy/v1.1.8/test/data/flar
       }
 
     const svg = d3.select("#bubble").append("svg")
-    // .attr("#bubble", `-${width / 2} -${height / 2} ${width} ${height}`)
-    .attr("width", width/2)
-    .attr("height", height/2)
-    .attr('transform', `translate(${width/2}, ${height/2})`)
+    .attr("viewBox", `-${width / 2} -${height / 2} ${width} ${height}`)
+    .attr("width", width)
+    .attr("height", height)
+    // .attr('transform', `translate(${width/2}, ${height/2})`)
     .style("display", "block")
     .style("margin", "0 -14px")
     .style("width", "calc(100% + 28px)")
