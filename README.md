@@ -1,4 +1,4 @@
-#[Index](https://modelobootcamp.github.io/Project-3/)
+# [Index](https://modelobootcamp.github.io/Project-3/)
 # Project-3
 
 <p align="center">
