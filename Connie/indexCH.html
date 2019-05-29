@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Project 3</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <style>
+  body {
+      position: relative; 
+  }
+  #Connie {padding-top:50px;height:500px;color: #fff; background-color: #1E88E5;}
+  #Farzad {padding-top:50px;height:3090px;color: #fff; background-color: #c67f66;}
+  #Olesya {padding-top:50px;height:500px;color: #fff; background-color: #ff9800;}
+  #section41 {padding-top:50px;height:500px;color: #fff; background-color: #00bcd4;}
+  #section42 {padding-top:50px;height:500px;color: #fff; background-color: #009688;}
+  </style>
+</head>
+<body data-spy="scroll" data-target=".navbar" data-offset="50">
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="#">Google Play Store (INDIA)</a>
+    </div>
+    <div>
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav">
+          <li><a href="#Connie">Connie</a></li>
+          <li><a href="#Farzad">Farzad</a></li>
+          <li><a href="#Olesya">Olesya</a></li>
+          <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Section 4 <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="#section41">Section 4-1</a></li>
+              <li><a href="#section42">Section 4-2</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>    
+
+<div id="Connie" class="container-fluid">
+  <h1>Connie</h1>
+              <div class="row">
+
+                        <div id="Category">
+                        <strong>App Category</strong>
+                        <span class="reset" style="display: none;">Selected: <span class="filter"></span></span>
+                        <a class="reset" href="javascript:CategoryChart.filterAll();dc.redrawAll();" style="display: none;">reset</a>
+
+                        <div class="clearfix"></div>
+
+                        </div>
+
+                        <div id="Type">
+                        <strong>Paid or Free</strong>
+                        <span class="reset" style="display: none;">Selected: <span class="filter"></span></span>
+                        <a class="reset" href="javascript:TypeChart.filterAll();dc.redrawAll();" style="display: none;">reset</a>
+
+                        <div class="clearfix"></div>
+
+                        </div>
+              </div>
+              <div class="row">
+                          <div id="Genres">
+                          <strong>Genres</strong>
+                          <span class="reset" style="display: none;">Selected: <span class="filter"></span></span>
+                          <a class="reset" href="javascript:GenresChart.filterAll();dc.redrawAll();" style="display: none;">reset</a>
+  
+                          <div class="clearfix"></div>
+                          </div>
+                          
+                        <div id="Content_Rating">
+                        <strong>Content_Rating</strong>
+                        <span class="reset" style="display: none;">Selected: <span class="filter"></span></span>
+                        <a class="reset" href="javascript:Content_RatingChart.filterAll();dc.redrawAll();" style="display: none;">reset</a>
+
+                        <div class="clearfix"></div>
+                        </div>
+
+              
+              <div class="dc-data-count">
+              <span class="filter-count"></span> selected out of <span class="total-count"></span> records | <a
+              href="javascript:dc.filterAll(); dc.renderAll();">Reset All</a>
+              </div>
+              </div>
+
+
+  <script src="crossfilter.js"></script>
+  <script src="d3.js"></script>
+  <script src="dc.js"></script>
+
+  <script>
+
+       var  CategoryChart = dc.pieChart("#Category"),
+            TypeChart = dc.pieChart("#Type"),
+              // RatingChart = dc.barChart('#Rating')
+            Content_RatingChart = dc.rowChart("#Content_Rating"),
+            GenresChart = dc.rowChart("#Genres"),
+            visCount = dc.dataCount(".dc-data-count")
+
+
+
+       d3.csv("data.csv", function(data) {
+
+
+            var ndx = crossfilter(data);
+            var all = ndx.groupAll();
+
+            var SizeDim = ndx.dimension(function (d) { return d["Size"]; });	
+            var Android_VerDim = ndx.dimension(function (d) { return d["Android_Ver"]; });	
+            var CategoryDim = ndx.dimension(function (d) { return d["Category"]; });			
+            var TypeDim = ndx.dimension(function (d) { return d["Type"]; });
+            var Content_RatingDim = ndx.dimension(function (d) { return d["Content_Rating"]; });
+            var GenresDim = ndx.dimension(function (d) { return d["Genres"]; });
+
+            var SizeGroup = SizeDim.group();
+            var Android_VerGroup = Android_VerDim.group();
+            var CategoryGroup = CategoryDim.group();
+            var TypeGroup = TypeDim.group();
+            var Content_RatingGroup = Content_RatingDim.group();
+            var GenresGroup = GenresDim.group();
+                  
+
+            CategoryChart
+                 .dimension(CategoryDim)
+                 .group(CategoryGroup)
+                //  .elasticX(true)
+                 .width(200)
+                 .height(200)
+                 .radius(100)
+                 .label(function (d) {
+                if (CategoryChart.hasFilter() && !CategoryChart.hasFilter(d.key)) {
+                  return d.key + '(0%)';
+                }
+                var label = d.key;
+                if (all.value()) {
+                  label += '(' + Math.floor(d.value / all.value() * 100) + '%)';
+                }
+                return label;
+              })  
+                 .renderLabel(true)
+                 .innerRadius(50);
+            
+            TypeChart
+                 .dimension(TypeDim)
+                 .group(TypeGroup)
+                //  .elasticX(true)
+                 .width(200)
+                 .height(200)
+                 .radius(100)
+                 .label(function (d) {
+                if (CategoryChart.hasFilter() && !CategoryChart.hasFilter(d.key)) {
+                  return d.key + '(0%)';
+                }
+                var label = d.key;
+                if (all.value()) {
+                  label += '(' + Math.floor(d.value / all.value() * 100) + '%)';
+                }
+                return label;
+              })  
+                 .renderLabel(true)
+                 .innerRadius(50);
+
+          //   RatingChart
+          //       .width(500)
+          //       .height(200)
+          //       .dimension(Content_RatingDim)
+          //       .group(Content_RatingGroup)
+          //       // .elastsicY(true)
+          //       .round(dc.round.floor)
+          //       .alwaysUseRounding(true)
+          //       .x(d3.scaleLinear().domain([0,20]))
+          //       .renderHorizontalGridLines(true)
+          //       .filterPrinter(function (filters) {
+          //    var filter = filters[0], s = '';
+          //    s += numberFormat(filter[0]) + '% -> ' + numberFormat(filter[1]) + '%';
+          //    return s;
+          //  });
+
+            // Content_RatingChart
+            //      .dimension(Content_RatingDim)
+            //      .group(Content_RatingGroup)
+            //      .elasticX(true)
+            //      .width(800)
+            //      .height(400)
+
+            // GenresChart
+            //      .dimension(GenresDim)
+            //      .group(GenresGroup)
+            //      .elasticX(true)
+            //      .width(800)
+            //      .height(400)     
+            //      .data(function (group) { return group.top(10); });
+
+
+
+
+            dc.renderAll();
+
+       });
+  </script></p>
+
+
+</div>
+<!-- <div id="Farzad" class="container-fluid">
+  <h1>Farzad</h1>
+  <p><div>
+          <Div>	
+               </Div>
+                    <div>
+     
+                              <div id="Size">
+                                        <strong>Size</strong>
+                                        <span class="reset" style="display: none;">Selected: <span class="filter"></span></span>
+                                        <a class="reset" href="javascript:SizeChart.filterAll();dc.redrawAll();" style="display: none;">reset</a>
+                    
+                                        <div class="clearfix"></div>
+                    
+                              </div>
+     
+                              <div id="Android_Ver">
+                              <strong>Android Version</strong>
+                              <span class="reset" style="display: none;">Selected: <span class="filter"></span></span>
+                              <a class="reset" href="javascript:Android_VerChart.filterAll();dc.redrawAll();" style="display: none;">reset</a>
+     
+                              <div class="clearfix"></div>
+     
+                              </div>
+     
+                              <div id="Category">
+                              <strong>Category</strong>
+                              <span class="reset" style="display: none;">Selected: <span class="filter"></span></span>
+                              <a class="reset" href="javascript:CategoryChart.filterAll();dc.redrawAll();" style="display: none;">reset</a>
+     
+                              <div class="clearfix"></div>
+     
+                              </div>
+     
+     
+                              <div id="Type">
+                              <strong>Type</strong>
+                              <span class="reset" style="display: none;">Selected: <span class="filter"></span></span>
+                              <a class="reset" href="javascript:TypeChart.filterAll();dc.redrawAll();" style="display: none;">reset</a>
+     
+                              <div class="clearfix"></div>
+     
+                              </div>
+     
+                              <div id="Content_Rating">
+                              <strong>Content_Rating</strong>
+                              <span class="reset" style="display: none;">Selected: <span class="filter"></span></span>
+                              <a class="reset" href="javascript:Content_RatingChart.filterAll();dc.redrawAll();" style="display: none;">reset</a>
+     
+                              <div class="clearfix"></div>
+                              </div>
+     
+                              <div id="Genres">
+                              <strong>Genres</strong>
+                              <span class="reset" style="display: none;">Selected: <span class="filter"></span></span>
+                              <a class="reset" href="javascript:GenresChart.filterAll();dc.redrawAll();" style="display: none;">reset</a>
+     
+                              <div class="clearfix"></div>
+                              </div>
+                    <div>
+                    <div class="dc-data-count">
+                    <span class="filter-count"></span> selected out of <span class="total-count"></span> records | <a
+                    href="javascript:dc.filterAll(); dc.renderAll();">Reset All</a>
+                    </div>
+          </div>
+     
+          </table>
+          </div>
+     </div>
+     
+          <script src="crossfilter.js"></script>
+          <script src="./d3.js"></script>
+          <script src="dc.js"></script>
+     
+          <script>
+     
+               var  SizeChart = dc.rowChart("#Size"),
+                    Android_VerChart = dc.rowChart("#Android_Ver"),
+                    CategoryChart = dc.rowChart("#Category"),
+                    TypeChart = dc.rowChart("#Type"),
+                    Content_RatingChart = dc.rowChart("#Content_Rating"),
+                    GenresChart = dc.rowChart("#Genres"),
+                    visCount = dc.dataCount(".dc-data-count")
+     
+     
+     
+               d3.csv("data.csv", function(data) {
+     
+     
+                    var ndx = crossfilter(data);
+                    var all = ndx.groupAll();
+     
+                    var SizeDim = ndx.dimension(function (d) { return d["Size"]; });	
+                    var Android_VerDim = ndx.dimension(function (d) { return d["Android_Ver"]; });	
+                    var CategoryDim = ndx.dimension(function (d) { return d["Category"]; });			
+                    var TypeDim = ndx.dimension(function (d) { return d["Type"]; });
+                    var Content_RatingDim = ndx.dimension(function (d) { return d["Content_Rating"]; });
+                    var GenresDim = ndx.dimension(function (d) { return d["Genres"]; });
+     
+                    var SizeGroup = SizeDim.group();
+                    var Android_VerGroup = Android_VerDim.group();
+                    var CategoryGroup = CategoryDim.group();
+                    var TypeGroup = TypeDim.group();
+                    var Content_RatingGroup = Content_RatingDim.group();
+                    var GenresGroup = GenresDim.group();
+     
+     
+                    SizeChart
+                         .dimension(SizeDim)
+                         .group(SizeGroup)
+                         .elasticX(true)
+                         .width(800)
+                         .height(400);
+     
+                    Android_VerChart
+                         .dimension(Android_VerDim)
+                         .group(Android_VerGroup)
+                         .elasticX(true)
+                         .width(800)
+                         .height(400);                    
+     
+                    CategoryChart
+                         .dimension(CategoryDim)
+                         .group(CategoryGroup)
+                         .elasticX(true)
+                         .width(800)
+                         .height(800);
+                    
+                    TypeChart
+                         .dimension(TypeDim)
+                         .group(TypeGroup)
+                         .elasticX(true)
+                         .width(800)
+                         .height(400);
+     
+                    Content_RatingChart
+                         .dimension(Content_RatingDim)
+                         .group(Content_RatingGroup)
+                         .elasticX(true)
+                         .width(800)
+                         .height(400)
+     
+                    GenresChart
+                         .dimension(GenresDim)
+                         .group(GenresGroup)
+                         .elasticX(true)
+                         .width(800)
+                         .height(400)     
+                         .data(function (group) { return group.top(10); });
+     
+     
+     
+     
+                    dc.renderAll();
+     
+               });
+          </script></p>
+</div> -->
+<!-- <div id="Olesya" class="container-fluid">
+  <h1>Olesya</h1>
+  <p>Try to scroll this section and look at the navigation bar while scrolling! Try to scroll this section and look at the navigation bar while scrolling!</p>
+  <p>Try to scroll this section and look at the navigation bar while scrolling! Try to scroll this section and look at the navigation bar while scrolling!</p>
+</div>
+<div id="section41" class="container-fluid">
+  <h1>Section 4 Submenu 1</h1>
+  <p>Try to scroll this section and look at the navigation bar while scrolling! Try to scroll this section and look at the navigation bar while scrolling!</p>
+  <p>Try to scroll this section and look at the navigation bar while scrolling! Try to scroll this section and look at the navigation bar while scrolling!</p>
+</div>
+<div id="section42" class="container-fluid">
+  <h1>Section 4 Submenu 2</h1>
+  <p>Try to scroll this section and look at the navigation bar while scrolling! Try to scroll this section and look at the navigation bar while scrolling!</p>
+  <p>Try to scroll this section and look at the navigation bar while scrolling! Try to scroll this section and look at the navigation bar while scrolling!</p>
+</div> -->
+
+</body>
+</html>
+<hr><hr><hr><hr>
+
