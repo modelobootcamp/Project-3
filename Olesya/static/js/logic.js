@@ -1,28 +1,3 @@
-// var data = d3.json("db/top_apps.json")
-// data.then(d => {console.log("data", data)})
-
-
-// function zoom(d) {
-//   const focus0 = focus;
-
-//   focus = d;
-
-//   const transition = svg.transition()
-//       .duration(d3.event.altKey ? 7500 : 750)
-//       .tween("zoom", d => {
-//         const i = d3.interpolateZoom(view, [focus.x, focus.y, focus.r * 2]);
-//         return t => zoomTo(i(t));
-//       });
-
-//   label
-//     .filter(function(d) { return d.parent === focus || this.style.display === "inline"; })
-//     .transition(transition)
-//       .style("fill-opacity", d => d.parent === focus ? 1 : 0)
-//       .on("start", function(d) { if (d.parent === focus) this.style.display = "inline"; })
-//       .on("end", function(d) { if (d.parent !== focus) this.style.display = "none"; });
-// }
-
-
 d3.json("top_apps").then(function(data) {
     console.log(data);
 
