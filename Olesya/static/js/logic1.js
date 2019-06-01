@@ -8,7 +8,8 @@ var  SizeChart = dc.rowChart(“#Size”),
 
 
 
-              d3.csv(“data.csv”, function(data) {
+              d3.json("apps", function(data) {
+                  console.log(data);
 
 
                    var ndx = crossfilter(data);
