@@ -10,19 +10,30 @@
 </head>
 
 <body>
+  <script src="https://www.jsdelivr.com/package/npm/chart.js?path=dist"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+  <script src="https://cdn.plot.ly/plotly-1.31.2.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <script src="{{ url_for('static', filename='js/logic.js') }}"></script>
+  <!-- <script src="{{ url_for('static', filename='js/app.js') }}"></script> -->
 
-  <div class = "container">
-    <div class = "row">
-      <div class = "column-md-6">
-        <h>Bubble plot</h>
-        <div id="bubble"></div>
+    <div class = "container">
+        <div class = "row">
+          <div class = "col-md-6">
+            <h>Bubble plot</h>
+            <div id="bubble"></div>
+          </div>
+    
+          <div class = "col-md-6">
+            <h>Second bubble chart</h>
+            <div id="bar">
+              <canvas id="bar-chart-horizontal" width="400" height="400"></canvas>
+            </div>
+          </div>
+        </div>
       </div>
-
-      <div class = "column-md-6">
-          <h>Some other plot</h>
-      </div>
-    </div>
-  </div>
+    
 
    <!-- <div class="container">
     <div class="row">
@@ -58,11 +69,6 @@
     </div>
   </div> -->
 
-  <script src="https://cdn.plot.ly/plotly-1.31.2.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
-  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-  <!-- <script src="{{ url_for('static', filename='js/bonus.js') }}"></script> -->
-  <script src="{{ url_for('static', filename='js/logic.js') }}"></script>
 
 </body>
 

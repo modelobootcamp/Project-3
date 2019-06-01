@@ -23,7 +23,7 @@
 // }
 
 
-d3.json("db/top_apps.json").then(function(data) {
+d3.json("top_apps").then(function(data) {
     console.log(data);
 
     pack = data => d3.pack()
