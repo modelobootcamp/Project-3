@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Project 3</title>
+  <title>06-01-2019-10-42</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
@@ -11,14 +11,19 @@
   body {
       position: relative; 
   }
-  #Connie {padding-top:50px;height:500px;color: #fff; background-color: #1E88E5;}
-  #Farzad {padding-top:50px;height:3090px;color: #fff; background-color: #c67f66;}
-  #Olesya {padding-top:50px;height:500px;color: #fff; background-color: #ff9800;}
-  #section41 {padding-top:50px;height:500px;color: #fff; background-color: #00bcd4;}
-  #section42 {padding-top:50px;height:500px;color: #fff; background-color: #009688;}
+  #Connie {padding-top:50px;height:500px;color: rgb(250, 250, 0); background-color: #1E88E5;}
+  #Farzad {padding-top:50px;height:3090px;color: rgb(250, 250, 0); background-color: #c7bfbc;}
+  #Olesya {padding-top:50px;height:500px;color:  rgb(250, 250, 0); background-color: #b4a286;}
+  #section41 {padding-top:50px;height:500px;color: rgb(250, 250, 0); background-color: #00bcd4;}
+  #FC {padding-top:50px;height:500px;color: rgb(250, 250, 0); background-color: #009688;}
+  #Project3 {padding-top:50px;height:500px;color: rgb(249, 2, 2); background-color: #060606;}
+  
   </style>
 </head>
 <body data-spy="scroll" data-target=".navbar" data-offset="50">
+
+<!-- Clean div tags -->
+<!-- Add header and adjust the Content chart -->
 
 <nav class="navbar navbar-inverse navbar-fixed-top">
   <div class="container-fluid">
@@ -34,12 +39,12 @@
       <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="nav navbar-nav">
           <li><a href="#Connie">Connie</a></li>
-          <li><a href="#Farzad">Farzad</a></li>
+          <li><a href="#Farzad">Content Ratings</a></li>
           <li><a href="#Olesya">Olesya</a></li>
           <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Section 4 <span class="caret"></span></a>
             <ul class="dropdown-menu">
               <li><a href="#section41">Section 4-1</a></li>
-              <li><a href="#section42">Section 4-2</a></li>
+              <li><a href="#FC">FC</a></li>
             </ul>
           </li>
         </ul>
@@ -48,186 +53,79 @@
   </div>
 </nav>    
 
+
+<div id="Project3" class="container-fluid">
+
+          <h1><strong>Project 3</strong></h1>
+          <h1>Project 3</h1>
+          <p>Project 3</p>
+          <p>Project 3</p>
+        </div>
+
 <div id="Connie" class="container-fluid">
-  <h1>Connie</h1>
-  <p>Try to scroll this section and look at the navigation bar while scrolling! Try to scroll this section and look at the navigation bar while scrolling!</p>
-  <p>Try to scroll this section and look at the navigation bar while scrolling! Try to scroll this section and look at the navigation bar while scrolling!</p>
-</div>
+          <h1><strong>Connie</strong></h1>
+          <h1>Connie</h1>
+          <p>Connie</p>
+          <p>Connie</p>
+        </div>
+
 <div id="Farzad" class="container-fluid">
-  <h1>Farzad</h1>
-  <p><div>
-          <Div>	
-               </Div>
-                    <div>
-     
-                              <div id="Size">
-                                        <strong>Size</strong>
-                                        <span class="reset" style="display: none;">Selected: <span class="filter"></span></span>
-                                        <a class="reset" href="javascript:SizeChart.filterAll();dc.redrawAll();" style="display: none;">reset</a>
-                    
-                                        <div class="clearfix"></div>
-                    
-                              </div>
-     
-                              <div id="Android_Ver">
-                              <strong>Android Version</strong>
-                              <span class="reset" style="display: none;">Selected: <span class="filter"></span></span>
-                              <a class="reset" href="javascript:Android_VerChart.filterAll();dc.redrawAll();" style="display: none;">reset</a>
-     
-                              <div class="clearfix"></div>
-     
-                              </div>
-     
-                              <div id="Category">
-                              <strong>Category</strong>
-                              <span class="reset" style="display: none;">Selected: <span class="filter"></span></span>
-                              <a class="reset" href="javascript:CategoryChart.filterAll();dc.redrawAll();" style="display: none;">reset</a>
-     
-                              <div class="clearfix"></div>
-     
-                              </div>
-     
-     
-                              <div id="Type">
-                              <strong>Type</strong>
-                              <span class="reset" style="display: none;">Selected: <span class="filter"></span></span>
-                              <a class="reset" href="javascript:TypeChart.filterAll();dc.redrawAll();" style="display: none;">reset</a>
-     
-                              <div class="clearfix"></div>
-     
-                              </div>
-     
-                              <div id="Content_Rating">
-                              <strong>Content_Rating</strong>
-                              <span class="reset" style="display: none;">Selected: <span class="filter"></span></span>
-                              <a class="reset" href="javascript:Content_RatingChart.filterAll();dc.redrawAll();" style="display: none;">reset</a>
-     
-                              <div class="clearfix"></div>
-                              </div>
-     
-                              <div id="Genres">
-                              <strong>Genres</strong>
-                              <span class="reset" style="display: none;">Selected: <span class="filter"></span></span>
-                              <a class="reset" href="javascript:GenresChart.filterAll();dc.redrawAll();" style="display: none;">reset</a>
-     
-                              <div class="clearfix"></div>
-                              </div>
-                    <div>
-                    <div class="dc-data-count">
-                    <span class="filter-count"></span> selected out of <span class="total-count"></span> records | <a
-                    href="javascript:dc.filterAll(); dc.renderAll();">Reset All</a>
-                    </div>
+     <div class="row">
+          <div class="col-sm-4">
+<!-- Category chart -->
+               <h1><strong>Category</strong></h1>
+            <div id = "Category">
+                      
+                    <span class="reset" style="display: none;">Selected: <span class="filter"></span></span>
+                      <a class="reset" href="javascript:CategoryChart.filterAll();dc.redrawAll();" style="display: none;">reset</a>
+                      <div class="clearfix"></div>
+
           </div>
-     
-          </table>
+          </div>
+          <div class="col-sm-4">
+<!-- Genres chart -->
+               <h1><strong>Genres</strong></h1>
+
+               <div id="Genres" class="container-fluid">
+
+                    <span class="reset" style="display: none;">Selected: <span class="filter"></span></span>
+                         <a class="reset" href="javascript:GenresChart.filterAll();dc.redrawAll();" style="display: none;">reset</a>
+               <div class="clearfix"></div>
+          </div>
+          </div>
+          <div class="col-sm-4">
+<!-- Android Version chart -->
+               <h1><strong>Android Ver</strong></h1>
+          <div id = "Android_Ver">
+                
+                    <span class="reset" style="display: none;">Selected: <span class="filter"></span></span>
+                    <a class="reset" href="javascript:Android_VerChart.filterAll();dc.redrawAll();" style="display: none;">reset</a>
+                    <div class="clearfix"></div>
+          </div>
           </div>
      </div>
-     
-          <script src="crossfilter.js"></script>
-          <script src="./d3.js"></script>
-          <script src="dc.js"></script>
-     
-          <script>
-     
-               var  SizeChart = dc.rowChart("#Size"),
-                    Android_VerChart = dc.rowChart("#Android_Ver"),
-                    CategoryChart = dc.rowChart("#Category"),
-                    TypeChart = dc.rowChart("#Type"),
-                    Content_RatingChart = dc.rowChart("#Content_Rating"),
-                    GenresChart = dc.rowChart("#Genres"),
-                    visCount = dc.dataCount(".dc-data-count")
-     
-     
-     
-               d3.csv("data.csv", function(data) {
-     
-     
-                    var ndx = crossfilter(data);
-                    var all = ndx.groupAll();
-     
-                    var SizeDim = ndx.dimension(function (d) { return d["Size"]; });	
-                    var Android_VerDim = ndx.dimension(function (d) { return d["Android_Ver"]; });	
-                    var CategoryDim = ndx.dimension(function (d) { return d["Category"]; });			
-                    var TypeDim = ndx.dimension(function (d) { return d["Type"]; });
-                    var Content_RatingDim = ndx.dimension(function (d) { return d["Content_Rating"]; });
-                    var GenresDim = ndx.dimension(function (d) { return d["Genres"]; });
-     
-                    var SizeGroup = SizeDim.group();
-                    var Android_VerGroup = Android_VerDim.group();
-                    var CategoryGroup = CategoryDim.group();
-                    var TypeGroup = TypeDim.group();
-                    var Content_RatingGroup = Content_RatingDim.group();
-                    var GenresGroup = GenresDim.group();
-     
-     
-                    SizeChart
-                         .dimension(SizeDim)
-                         .group(SizeGroup)
-                         .elasticX(true)
-                         .width(800)
-                         .height(400);
-     
-                    Android_VerChart
-                         .dimension(Android_VerDim)
-                         .group(Android_VerGroup)
-                         .elasticX(true)
-                         .width(800)
-                         .height(400);                    
-     
-                    CategoryChart
-                         .dimension(CategoryDim)
-                         .group(CategoryGroup)
-                         .elasticX(true)
-                         .width(800)
-                         .height(800);
-                    
-                    TypeChart
-                         .dimension(TypeDim)
-                         .group(TypeGroup)
-                         .elasticX(true)
-                         .width(800)
-                         .height(400);
-     
-                    Content_RatingChart
-                         .dimension(Content_RatingDim)
-                         .group(Content_RatingGroup)
-                         .elasticX(true)
-                         .width(800)
-                         .height(400)
-     
-                    GenresChart
-                         .dimension(GenresDim)
-                         .group(GenresGroup)
-                         .elasticX(true)
-                         .width(800)
-                         .height(400)     
-                         .data(function (group) { return group.top(10); });
-     
-     
-     
-     
-                    dc.renderAll();
-     
-               });
-          </script></p>
-</div>
 <div id="Olesya" class="container-fluid">
   <h1>Olesya</h1>
-  <p>Try to scroll this section and look at the navigation bar while scrolling! Try to scroll this section and look at the navigation bar while scrolling!</p>
-  <p>Try to scroll this section and look at the navigation bar while scrolling! Try to scroll this section and look at the navigation bar while scrolling!</p>
+  <p>Olesya</p>
+  <p>Olesya</p>
 </div>
 <div id="section41" class="container-fluid">
   <h1>Section 4 Submenu 1</h1>
-  <p>Try to scroll this section and look at the navigation bar while scrolling! Try to scroll this section and look at the navigation bar while scrolling!</p>
-  <p>Try to scroll this section and look at the navigation bar while scrolling! Try to scroll this section and look at the navigation bar while scrolling!</p>
+  <p></p>
+  <p></p>
 </div>
-<div id="section42" class="container-fluid">
+<div id="FC" class="container-fluid">
   <h1>Section 4 Submenu 2</h1>
-  <p>Try to scroll this section and look at the navigation bar while scrolling! Try to scroll this section and look at the navigation bar while scrolling!</p>
-  <p>Try to scroll this section and look at the navigation bar while scrolling! Try to scroll this section and look at the navigation bar while scrolling!</p>
+  <div id="Farzad-1" class="container-fluid">
+  <h1>Farzad</h1>
+  
+</div></p>
 </div>
-
+<script src="crossfilter.js"></script>
+<script src="./d3.js"></script>
+<script src="dc.js"></script>
+<script src="farzad.js"></script>
 </body>
 </html>
-<hr><hr><hr><hr>
+
 

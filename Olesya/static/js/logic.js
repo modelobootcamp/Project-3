@@ -1,5 +1,5 @@
-d3.json("top_apps").then(function(data) {
 
+d3.json("top_apps").then(function(data) {
     console.log(data);
 
     pack = data => d3.pack()
@@ -151,4 +151,10 @@ d3.json("top_apps").then(function(data) {
 
 
   return svg.node();
-});
+})
+
+
+
+
+
+
