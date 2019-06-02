@@ -40,11 +40,11 @@ def all_apps():
     records = mongo.db.all_apps.find()
     for record in records:
         new_dict = {k: v for k, v in record.items() if k !="_id"}
-        new_dict_clean = {k: v.replace('NaN', "null") for k, v in new_dict.items() if isinstance(v,str) }
-        apps.append(new_dict_clean)
+        # new_dict_clean = {k: v.replace('NaN', "null") for k, v in new_dict.items() if isinstance(v,str) }
+        apps.append(new_dict)
 
     # Return a list dictionaries with records about each app
-    return jsonify([(app) for app in apps])
+    return jsonify([app for app in apps])
 
 if __name__ == "__main__":
     app.run(debug=True)
