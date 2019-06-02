@@ -14,19 +14,19 @@ d3.json("all_apps", function(data) {
     var ndx = crossfilter(data);
     var all = ndx.groupAll();
 
-    var SizeDim = ndx.dimension(function (d) { return d["Size"]; });	
-    var Android_VerDim = ndx.dimension(function (d) { return d["Android Ver"]; });	
+    // var SizeDim = ndx.dimension(function (d) { return d["Size"]; });	
+    // var Android_VerDim = ndx.dimension(function (d) { return d["Android Ver"]; });	
     var CategoryDim = ndx.dimension(function (d) { return d["Category"]; });			
     var TypeDim = ndx.dimension(function (d) { return d["Type"]; });
-    var Content_RatingDim = ndx.dimension(function (d) { return d["Content Rating"]; });
-    var GenresDim = ndx.dimension(function (d) { return d["Genres"]; });
+    // var Content_RatingDim = ndx.dimension(function (d) { return d["Content Rating"]; });
+    // var GenresDim = ndx.dimension(function (d) { return d["Genres"]; });
 
-    var SizeGroup = SizeDim.group();
-    var Android_VerGroup = Android_VerDim.group();
+    // var SizeGroup = SizeDim.group();
+    // var Android_VerGroup = Android_VerDim.group();
     var CategoryGroup = CategoryDim.group();
     var TypeGroup = TypeDim.group();
-    var Content_RatingGroup = Content_RatingDim.group();
-    var GenresGroup = GenresDim.group();
+    // var Content_RatingGroup = Content_RatingDim.group();
+    // var GenresGroup = GenresDim.group();
 
         
 
@@ -38,7 +38,7 @@ d3.json("all_apps", function(data) {
         .height(200)
         .radius(100)
         .label(function (d) {
-            if (CategoryChart.hasFilter() && !CategoryChart.hasFilter(d.key)) {
+            if (pieChart.hasFilter() && !pieChart.hasFilter(d.key)) {
             return d.key + '(0%)';
             }
             var label = d.key;

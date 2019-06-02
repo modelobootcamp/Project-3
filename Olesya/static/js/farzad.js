@@ -7,9 +7,9 @@ var  SizeChart = dc.rowChart("#Size"),
                    TypeChart = dc.rowChart("#Type"),
                    Content_RatingChart = dc.rowChart("#Content_Rating"),
                    GenresChart = dc.rowChart("#Genres"),
-                   visCount = dc.dataCount(".dc-data-count")
+               //     visCount = dc.dataCount(".dc-data-count")
 
-                   var ndx = crossfilter(data);
+                   ndx = crossfilter(data);
 
                    var SizeDim = ndx.dimension(function (d) { return d["Size"]; }); 
                    var Android_VerDim = ndx.dimension(function (d) { return d["Android Ver"]; }); 

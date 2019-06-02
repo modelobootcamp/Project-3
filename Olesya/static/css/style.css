@@ -1,0 +1,14 @@
+.jumbotron {
+    text-align: center;
+    background: url("https://cdn.wccftech.com/wp-content/uploads/2018/04/android-coppa--1030x515.jpg");
+    background-size: cover;
+
+}
+
+h1 {
+    text-align: center ;
+}
+
+.jumbotron h1 {
+    color: white !important;
+}

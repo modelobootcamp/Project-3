@@ -17,6 +17,11 @@ def index():
     """Return the homepage."""
     return render_template("index.html")
 
+@app.route("/categories")
+def categories():
+    """Return the homepage."""
+    return render_template("categories.html")
+
 
 @app.route("/top_apps")
 def top_apps():
@@ -27,8 +32,8 @@ def top_apps():
     # Return a nested dictionary for tio ten apps for every category
     return jsonify(top_apps_clean)
 
-@app.route("/apps")
-def apps():
+@app.route("/all_apps")
+def all_apps():
     """Return a list of sample names."""
     apps = []
     records = mongo.db.all_apps.find()
