@@ -21,21 +21,31 @@
 
   <div class="jumbotron">
       <h1 class="display-4" id = "title">Popular Android Apps</h1>
+      <p class="lead  text-center">
+          <a class="btn btn-success btn-lg" href="/" role="button">Reset</a>
+          <a class="btn btn-success btn-lg" href="/categories" role="button">Explore Categories</a>
+      </p>
   </div>
 
     <div class = "container-fluid">
+
         <div class = "row">
-          <div class = "col-md-6">
-            <h1>Top 10 Apps in each category</h1>
-            <div id="bubble"></div>
-          </div>
-    
-          <div class = "col-md-6">
-            <h1>Ratings and Reviews</h1>
-            <div id="bar">
-              <canvas id="bar-chart-horizontal" width="400" height="400"></canvas>
+
+            <div class = "col-md-6">
+              <h1>Top 10 Apps in Each Category</h1>
+              <div id="bubble"></div>
             </div>
-          </div>
+    
+            <div class = "col-md-6">
+              <h1>Ratings and Reviews</h1>
+              <!-- <br> -->
+              <!-- <a type="button" class="btn btn-success btn-lg btn-block" role="Button" href="/categories">Explore categories in-depth</a>
+              <br> -->
+              <div id="bar">
+                <canvas id="bar-chart-horizontal" width="400" height="400"></canvas>
+              </div>
+            </div>
+
         </div>
 
       </div>

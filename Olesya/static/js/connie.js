@@ -34,9 +34,9 @@ d3.json("all_apps", function(data) {
         .dimension(CategoryDim)
         .group(CategoryGroup)
         //  .elasticX(true)
-        .width(200)
-        .height(200)
-        .radius(100)
+        .width(400)
+        .height(400)
+        .radius(200)
         .label(function (d) {
             if (pieChart.hasFilter() && !pieChart.hasFilter(d.key)) {
             return d.key + '(0%)';

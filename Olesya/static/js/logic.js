@@ -1,5 +1,64 @@
+d3.json("all_apps").then(function(apps) {
+
+  uniqueCategories = apps.map(record => record["Category"]).filter((record, i, apps) => apps.indexOf(record) == i);
+
+  var catDict = uniqueCategories.map(function(cat) {
+    return {"Category": cat}
+  })
+
+  catDict.forEach(dict => {
+    var filtered = apps.filter(d => d["Category"] == dict["Category"]);
+    dict['App Count'] = filtered.length;
+
+    var sumInstalls = filtered.reduce(function(prev, cur) {
+      return prev + cur["Installs"];
+    }, 0);
+    dict['Total Installs'] = sumInstalls;
+
+    var sumReviews = filtered.reduce(function(prev, cur) {
+      return prev + cur["Reviews"];
+    }, 0);
+    dict['Total Reviews'] = sumReviews;
+    dict['Installs Norm'] = sumInstalls/filtered.length;
+
+  });
+
+  sortedCategories = catDict.sort((a, b) => a['Installs Norm'] - b["Installs Norm"]).reverse();
+
+  topCategories = sortedCategories.slice(0,10)
+  // .map(d=>d["Category"]);
+
+  // appsTopCat = apps.filter(app => topCategories.includes(app["Category"]));
+  colorGradient = d3.scaleLinear()
+  .domain([0, 10])
+  .range(["hsl(152,80%,80%)", "hsl(228,30%,40%)"])
+  .interpolate(d3.interpolateHcl)
+
+  var data = [{
+    values: topCategories.map(d=>d["Installs Norm"]),
+    labels: topCategories.map(d=>d["Category"]),
+    type: 'pie',
+    marker: {
+      colors: [colorGradient(9), colorGradient(8), colorGradient(7),
+        colorGradient(6), colorGradient(5), colorGradient(4), colorGradient(3),
+        colorGradient(3), colorGradient(1), colorGradient(0)]
+    }
+  }];
+  
+  var layout = {
+    title: "10 Most Installed App Categories",
+    height: 800,
+    width: 800
+  };
+  
+  Plotly.newPlot('bar', data, layout);
+
+  
+});
+
+
 d3.json("top_apps").then(function(data) {
-  console.log(data);
+
 
   pack = data => d3.pack()
   .size([width, height])
@@ -7,11 +66,9 @@ d3.json("top_apps").then(function(data) {
   .sum(d => d.installs)
   .sort((a, b) => b.installs - a.installs));
 
-  console.log(pack);
 
   format = d3.format(",d")
 
-  console.log(format)
 
   const width = 400
   const height = width
@@ -27,8 +84,6 @@ d3.json("top_apps").then(function(data) {
   let focus = root;
   let view;
 
-  console.log(root);
-
 
   function newBarChart(data, category) {
 
@@ -36,9 +91,10 @@ d3.json("top_apps").then(function(data) {
     var installs = data.map(d => d.installs);
     var rating = data.map(d => d.rating);
     var reviews = data.map(d => d.reviews);
-    console.log(data, category);
 
     d3.select('canvas').remove();
+    d3.select("#bar").html(null);
+
     d3.select('#bar').append('canvas')
     .attr("id", "bar-chart-horizontal")
     .attr("width", width)
@@ -67,18 +123,18 @@ d3.json("top_apps").then(function(data) {
         scales:{
           xAxes: [{
             display: true, 
-            // id:"Rating",
-            // type: "linear",
-            // position: "top",
+            id:"Rating",
+            type: "linear",
+            position: "top",
             scaleLabel: {
               display: true,
               labelString: 'Rating'
             }
           },{
             display: true,
-            // id:"Reviews",
-            // type: "linear",
-            // position: "bottom",
+            id:"Reviews",
+            type: "linear",
+            position: "bottom",
             scaleLabel: {
               display: true,
               labelString: 'Reviews'
