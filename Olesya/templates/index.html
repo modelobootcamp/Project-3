@@ -5,8 +5,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Flask Plotlyjs Example</title>
+  <title>Android Apps</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/static/css/style.css">
+
 </head>
 
 <body>
@@ -15,63 +17,36 @@
   <script src="https://cdn.plot.ly/plotly-1.31.2.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-  <script src="{{ url_for('static', filename='js/crossfilter.js') }}"></script>
-  <script src="{{ url_for('static', filename='js/d3.js') }}"></script>
-  <script src="{{ url_for('static', filename='js/dc.js') }}"></script>
   <script src="{{ url_for('static', filename='js/logic.js') }}"></script>
-  <script src="{{ url_for('static', filename='js/logic1.js') }}"></script>
 
-    <div class = "container">
+  <div class="jumbotron">
+      <h1 class="display-4" id = "title">Popular Android Apps</h1>
+      <p class="lead  text-center">
+          <a class="btn btn-success btn-lg" href="/" role="button">Reset</a>
+          <a class="btn btn-success btn-lg" href="/categories" role="button">Explore Categories</a>
+      </p>
+  </div>
+
+    <div class = "container-fluid">
+
         <div class = "row">
-          <div class = "col-md-6">
-            <h>Bubble plot</h>
-            <div id="bubble"></div>
-          </div>
-    
-          <div class = "col-md-6">
-            <h>Second bubble chart</h>
-            <div id="bar">
-              <canvas id="bar-chart-horizontal" width="400" height="400"></canvas>
+
+            <div class = "col-md-6">
+              <h1>Top 10 Apps in Each Category</h1>
+              <div id="bubble"></div>
             </div>
-          </div>
+    
+            <div class = "col-md-6">
+              <h1>Ratings and Reviews</h1>
+              <!-- <br> -->
+              <!-- <a type="button" class="btn btn-success btn-lg btn-block" role="Button" href="/categories">Explore categories in-depth</a>
+              <br> -->
+              <div id="bar">
+                <canvas id="bar-chart-horizontal" width="400" height="400"></canvas>
+              </div>
+            </div>
+
         </div>
-
-
-        <div class="container-fluid" id="All_Charts">
-          <div class="row">
-               <div class="col-sm-4">
-                    <!-- Category chart -->
-                    <h1><strong>Category</strong></h1>
-                 <div id = "Category">
-                           
-                           <span class="reset" style="display: none;">Selected: <span class="filter"></span></span>
-                           <a class="reset" href="javascript:SizeChart.filterAll();dc.redrawAll();" style="display: none;">reset</a>
-                           <div class="clearfix"></div>
-     
-               </div>
-               </div>
-               <div class="col-sm-4">
-                    <!-- Android Version chart -->
-                    <h1><strong>Android Ver</strong></h1>
-               <div id = "Android_Ver">
-                     
-                         <span class="reset" style="display: none;">Selected: <span class="filter"></span></span>
-                         <a class="reset" href="javascript:SizeChart.filterAll();dc.redrawAll();" style="display: none;">reset</a>
-                         <div class="clearfix"></div>
-               </div>
-               </div>
-               <div class="col-sm-4">
-                    <!-- Content chart -->
-                    <h1><strong>Content Rating</strong></h1>
-                    
-               <div id="Content_Rating"></div>
-                    <span class="reset" style="display: none;">Selected: <span class="filter"></span></span>
-                    <a class="reset" href="javascript:SizeChart.filterAll();dc.redrawAll();" style="display: none;">reset</a>
-                    <div class="clearfix"></div>
-               </div>
-          </div>
-     </div>
-
 
       </div>
 
